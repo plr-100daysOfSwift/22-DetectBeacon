@@ -21,6 +21,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 		locationManager?.delegate = self
 		locationManager?.requestAlwaysAuthorization()
 
+		view.backgroundColor = .gray
+
 	}
 
 	func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
