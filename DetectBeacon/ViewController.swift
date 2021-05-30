@@ -23,6 +23,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 
 	}
 
+	func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+		if status == .authorizedAlways {
+			if CLLocationManager.isMonitoringAvailable(for: CLBeaconRegion.self) {
+				if CLLocationManager.isRangingAvailable() {
+					// do stuff
+				}
+			}
+		}
+	}
 
 }
 
