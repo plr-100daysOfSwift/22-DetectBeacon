@@ -25,6 +25,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 
 	}
 
+	// TODO: this delegate method is deprecated.
+	// convert to func locationManagerDidChangeAuthorization(_ manager: CLLocationManager)
 	func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
 		if status == .authorizedAlways {
 			if CLLocationManager.isMonitoringAvailable(for: CLBeaconRegion.self) {
