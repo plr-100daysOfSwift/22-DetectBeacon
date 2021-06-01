@@ -11,7 +11,8 @@ import CoreLocation
 class ViewController: UIViewController, CLLocationManagerDelegate {
 
 	@IBOutlet var distanceReading: UILabel!
-
+	@IBOutlet var regionLabel: UILabel!
+	
 	var locationManager: CLLocationManager?
 	var beaconDetected = false
 

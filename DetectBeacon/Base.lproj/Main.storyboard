@@ -22,21 +22,30 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="---" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aN5-ni-H6e">
+                                <rect key="frame" x="191.5" y="485" width="31.5" height="29"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="aN5-ni-H6e" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="2EV-ZW-ej5"/>
                             <constraint firstItem="zbo-aS-iud" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="R88-SE-TNG"/>
+                            <constraint firstItem="aN5-ni-H6e" firstAttribute="top" secondItem="zbo-aS-iud" secondAttribute="bottom" constant="8" symbolic="YES" id="bwx-Nt-ylJ"/>
                             <constraint firstItem="zbo-aS-iud" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="zw7-0o-YFM"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="distanceReading" destination="zbo-aS-iud" id="yqS-6A-zIJ"/>
+                        <outlet property="regionLabel" destination="aN5-ni-H6e" id="wrh-Tr-j6D"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-117" y="104"/>
+            <point key="canvasLocation" x="-117.39130434782609" y="103.79464285714285"/>
         </scene>
     </scenes>
     <resources>
