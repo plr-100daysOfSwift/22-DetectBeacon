@@ -14,7 +14,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 	@IBOutlet var regionLabel: UILabel!
 	
 	var locationManager: CLLocationManager?
-	var beaconDetected = false
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -76,20 +75,22 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 		}
 	}
 
-	// TODO: Deprecated
-	func locationManager(_ manager: CLLocationManager, didRangeBeacons beacons: [CLBeacon], in region: CLBeaconRegion) {
+	func locationManager(_ manager: CLLocationManager, didRange beacons: [CLBeacon], satisfying beaconConstraint: CLBeaconIdentityConstraint) {
 		if let beacon = beacons.first {
-			if !beaconDetected {
-				beaconDetected = true
-				let ac = UIAlertController(title: "Beacon detected", message: nil, preferredStyle: .alert)
-				ac.addAction(UIAlertAction(title: "OK", style: .default))
-				present(ac, animated: true)
-			}
 			update(distance: beacon.proximity)
-		} else {
-			beaconDetected = false
-			update(distance: .unknown)
 		}
 	}
 
+	func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+		let identifier = region.identifier
+		regionLabel.text = identifier
+		let ac = UIAlertController(title: "Beacon detected", message: "You entered the \(identifier) region.", preferredStyle: .alert)
+		ac.addAction(UIAlertAction(title: "OK", style: .default))
+		present(ac, animated: true)
+	}
+
+	func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
+		update(distance: .unknown)
+		regionLabel.text = "---"
+	}
 }
