@@ -12,6 +12,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 
 	@IBOutlet var distanceReading: UILabel!
 	@IBOutlet var regionLabel: UILabel!
+	@IBOutlet var rangeIndicator: UIView!
 	
 	var locationManager: CLLocationManager?
 
@@ -21,6 +22,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 		locationManager = CLLocationManager()
 		locationManager?.delegate = self
 		locationManager?.requestAlwaysAuthorization()
+
+		rangeIndicator.backgroundColor = .white
+		rangeIndicator.alpha = 0.25
+		rangeIndicator.layer.cornerRadius = 128
+		// TODO: Add a gradient
 
 		view.backgroundColor = .gray
 
