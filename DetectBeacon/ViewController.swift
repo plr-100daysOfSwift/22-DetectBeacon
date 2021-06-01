@@ -38,13 +38,23 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 	}
 
 	func startScanning() {
-		let uuid = UUID(uuidString: "5A4BCFCE-174E-4BAC-A814-092E77F6B7E5")!
-		// TODO: Deprecated
-		let beaconRegion = CLBeaconRegion(proximityUUID: uuid, major: 123, minor: 456, identifier: "MyBeacon")
 
-		locationManager?.startMonitoring(for: beaconRegion)
-		// TODO: Deprecated
-		locationManager?.startRangingBeacons(in: beaconRegion)
+		typealias Beacon = (identifier: String, uuid: UUID, major: CLBeaconMajorValue, minor: CLBeaconMinorValue)
+
+		let beacons: [Beacon] =
+		[
+			(identifier: "Apple", uuid: UUID(uuidString: "5A4BCFCE-174E-4BAC-A814-092E77F6B7E5")!, major: 123, minor: 456),
+			(identifier: "TwoCanoes", uuid: UUID(uuidString: "92AB49BE-4127-42F4-B532-90fAF1E26491")!, major: 123, minor: 456),
+			(identifier: "Radius", uuid: UUID(uuidString: "52414449-5553-4E45-5457-4F524B53434F")!, major: 654, minor: 321),
+		]
+
+		for beacon in beacons {
+			let constraint = CLBeaconIdentityConstraint(uuid: beacon.uuid, major: beacon.major, minor: beacon.minor)
+			let region = CLBeaconRegion(beaconIdentityConstraint: constraint, identifier: beacon.identifier)
+			locationManager?.startMonitoring(for: region)
+			locationManager?.startRangingBeacons(satisfying: constraint)
+		}
+
 	}
 
 	func update(distance: CLProximity) {
