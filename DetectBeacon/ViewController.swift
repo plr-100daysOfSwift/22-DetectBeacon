@@ -93,4 +93,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 		update(distance: .unknown)
 		regionLabel.text = "---"
 	}
+
+	func locationManager(_ manager: CLLocationManager, didDetermineState state: CLRegionState, for region: CLRegion) {
+		if state == .inside {
+			regionLabel.text = region.identifier
+		}
+	}
 }
